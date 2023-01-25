@@ -19,20 +19,19 @@ class App
 
             // Almacenamos la URL en forma de arreglo
             $url = explode('/', $url);
-        }
+            $archivoController = 'controllers/' . $url[0] . '.php';
 
-        $archivoController = 'controllers/' . $url[0] . '.php';
+            // Verificamos que exista el archivo controlador
 
-        // Verificamos que exista el archivo controlador
-
-        if (file_exists($archivoController)) {
-            require_once $archivoController;
-            $controller = new $url[0];
-            $controller->render();
-        } else {
-            $archivoController = 'controllers/error-404.php';
-            require_once $archivoController;
-            $controller = new Error404();
+            if (file_exists($archivoController)) {
+                require_once $archivoController;
+                $controller = new $url[0];
+                $controller->render();
+            } else {
+                $archivoController = 'controllers/error-404.php';
+                require_once $archivoController;
+                $controller = new Error404();
+            }
         }
     }
 }
