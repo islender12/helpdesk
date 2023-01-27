@@ -35,9 +35,8 @@ class Login extends Controller
                 $usuario = $this->model->UserLogin($item);
 
                 if (!empty($usuario->nombre)) {
-                    
                 } else {
-                    echo "Sin Encontrar";
+                    $this->view->mensaje = "Credenciales Incorrectas";
                 }
             }
         }

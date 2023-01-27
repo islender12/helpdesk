@@ -9,5 +9,10 @@ define('CHARSET', 'utf8mb4');
 
 function ruta(string $asset)
 {
-    return print("http://localhost/SistemaHelpDesk/$asset");
+    if ($asset === "login") {
+        $ruta = "http://localhost/helpdesk/login";
+        return $ruta;
+    } else {
+        return print("http://localhost/helpdesk/$asset");
+    }
 }
