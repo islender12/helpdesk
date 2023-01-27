@@ -2,11 +2,26 @@
 session_start();
 class Session
 {
-    public $user;
     public $id;
+    public $nombre;
+    public $apellido;
+    public $email;
 
     public function __construct()
     {
+        $this->id = $_SESSION['user_id'] ?? '';
+        $this->nombre = $_SESSION['nombre'] ?? '';
+        $this->apellido = $_SESSION['apellido'] ?? '';
+        $this->email = $_SESSION['email'] ?? '';
         
+        $request = $_SERVER['REQUEST_URI'];
+        $login = ['/helpdesk/login', '/helpdesk/'];
+        if ($request == $login[0] || $request == $login[1]) {
+            if (!empty($this->id)) {
+                redirect("home");
+            }
+        } elseif (empty($this->id)) {
+            redirect("login");
+        }
     }
 }

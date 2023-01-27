@@ -15,7 +15,8 @@ class Ticket extends Controller
         $this->view->render("ticket/consultarticket");
     }
 
-    public function nuevoticket(){
-        $this->view->render("ticket/consultarticket");
+    public function nuevoticket()
+    {
+        $this->view->render("ticket/nuevoticket");
     }
 }

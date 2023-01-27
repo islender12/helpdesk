@@ -31,7 +31,7 @@ class App
                     $controller->loadModel('login');
                     $controller->VerificaUsuario();
                     $controller->render();
-                } elseif ($nparam == 1) {
+                } elseif ($nparam == 1 && $url[0] != "logout") {
                     $controller->render();
                 } elseif ($nparam > 1 && method_exists($controller, $url[1])) {
                     if ($nparam > 2) {

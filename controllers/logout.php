@@ -28,7 +28,6 @@ class Logout
         session_destroy();
 
         // Redirigimos al Usuario al Login
-
-        header("Location: " . ruta("login"));
+        redirect("login");
     }
 }

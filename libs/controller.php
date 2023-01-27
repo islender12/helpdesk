@@ -5,11 +5,10 @@ class Controller
     public $view;
     public $model;
     public $session;
-
     public function __construct()
     {
-        $this->view = new View();
         $this->session = new Session();
+        $this->view = new View();
     }
 
     public function loadModel($model)

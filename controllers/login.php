@@ -35,6 +35,11 @@ class Login extends Controller
                 $usuario = $this->model->UserLogin($item);
 
                 if (!empty($usuario->nombre)) {
+                    $_SESSION['user_id'] = $usuario->id_user;
+                    $_SESSION['nombre'] = $usuario->nombre;
+                    $_SESSION['apellido'] = $usuario->apellido;
+                    $_SESSION['email']  = $usuario->email;
+                    redirect("home");
                 } else {
                     $this->view->mensaje = "Credenciales Incorrectas";
                 }
