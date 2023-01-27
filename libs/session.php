@@ -7,10 +7,6 @@ class Session
 
     public function __construct()
     {
-        if (empty($_SESSION)) {
-            echo '<script>console.log("SN")</script>';
-        } else {
-            echo "ST";
-        }
+        
     }
 }

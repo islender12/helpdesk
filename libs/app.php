@@ -22,7 +22,6 @@ class App
             $archivoController = 'controllers/' . $url[0] . '.php';
 
             $nparam = count($url);
-            echo $nparam;
             // Verificamos que exista el archivo controlador
 
             if (file_exists($archivoController)) {
@@ -35,13 +34,15 @@ class App
                 } elseif ($nparam == 1) {
                     $controller->render();
                 } elseif ($nparam > 1 && method_exists($controller, $url[1])) {
-                    $controller->{$url[1]}();
-                } elseif ($nparam > 2 && method_exists($controller, $url[1])) {
-                    $param = [];
-                    for ($i = 2; $i < $nparam; $i++) {
-                        array_push($param, $url[$i]);
+                    if ($nparam > 2) {
+                        $param = [];
+                        for ($i = 2; $i < $nparam; $i++) {
+                            array_push($param, $url[$i]);
+                        }
+                        $controller->{$url[1]}($param);
+                    } else {
+                        $controller->{$url[1]}();
                     }
-                    $controller->{$url[1]}($param);
                 } else {
                     $archivoController = 'controllers/error-404.php';
                     require_once $archivoController;
