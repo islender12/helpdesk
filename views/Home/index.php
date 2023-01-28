@@ -18,7 +18,6 @@ require "views/head.php";
     <div class="page-content">
         <div class="container-fluid">
             <h1>Home</h1>
-            <?php echo $this->session->id?>
         </div><!--.container-fluid-->
     </div><!--.page-content-->
 

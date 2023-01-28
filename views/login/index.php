@@ -1,29 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head lang="es">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>StartUI - Premium Bootstrap 4 Admin Dashboard Template</title>
-
-    <link href="public/img/favicon.144x144.png" rel="apple-touch-icon" type="image/png" sizes="144x144">
-    <link href="public/img/favicon.114x114.png" rel="apple-touch-icon" type="image/png" sizes="114x114">
-    <link href="public/img/favicon.72x72.png" rel="apple-touch-icon" type="image/png" sizes="72x72">
-    <link href="public/img/favicon.57x57.png" rel="apple-touch-icon" type="image/png">
-    <link href="public/img/favicon.png" rel="icon" type="image/png">
-    <link href="public/img/favicon.ico" rel="shortcut icon">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-    <link rel="stylesheet" href="public/css/separate/pages/login.min.css">
-    <link rel="stylesheet" href="public/css/lib/font-awesome/font-awesome.min.css">
-    <link rel="stylesheet" href="public/css/lib/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="public/css/main.css">
-</head>
+<?php require "views/head.php" ?>
 
 <body>
     <div class="page-center">
@@ -33,7 +11,7 @@
                     <div class="sign-avatar">
                         <img src="public/img/avatar-sign.png" alt="">
                     </div>
-                    <header class="sign-title">Sign In</header>
+                    <header class="sign-title">Acceso</header>
                     <?php
                     if ($this->mensaje) { ?>
                         <div class="alert alert-danger alert-icon alert-close alert-dismissible fade in" role="alert">
@@ -44,22 +22,13 @@
                         </div>
                     <?php } ?>
                     <div class="form-group">
-                        <input type="text" name="email" class="form-control" placeholder="Correo Electronico" value="<?php echo $this->email?>"/>
+                        <input type="text" name="email" class="form-control" placeholder="Correo Electronico" value="<?php echo $this->email ?>" />
                     </div>
                     <div class="form-group">
                         <input type="password" name="passwd" class="form-control" placeholder="Contraseña" />
                     </div>
-                    <div class="form-group">
-                        <div class="checkbox float-left">
-                            <input type="checkbox" id="signed-in" />
-                            <label for="signed-in">Keep me signed in</label>
-                        </div>
-                        <div class="float-right reset">
-                            <a href="reset-password.html">Reset Password</a>
-                        </div>
-                    </div>
-                    <button type="submit" name="enviar" class="btn btn-rounded">Sign in</button>
-                    <p class="sign-note">New to our website? <a href="sign-up.html">Sign up</a></p>
+                    <p class="text-right"><a href="sign-up.html">Cambiar Contraseña</a></p>
+                    <button type="submit" name="enviar" class="btn btn-rounded">Acceder</button>
                     <!--<button type="button" class="close">
                         <span aria-hidden="true">&times;</span>
                     </button>-->

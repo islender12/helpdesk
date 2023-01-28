@@ -24,7 +24,7 @@
                             <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
                             <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-question-sign"></span>Ayuda</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="<?php ruta('logout')?>"><span class="font-icon glyphicon glyphicon-log-out"></span>Cerrar Sesión</a>
+                            <a class="dropdown-item" href="<?php ruta('logout') ?>"><span class="font-icon glyphicon glyphicon-log-out"></span>Cerrar Sesión</a>
                         </div>
                     </div>
 
@@ -37,13 +37,14 @@
                 <div class="site-header-collapsed">
                     <div class="site-header-collapsed-in">
                         <div class="dropdown dropdown-typical">
-                            <a href="<?php ruta("home")?>" class="dropdown-toggle no-arr">
+                            <a href="<?php ruta("home") ?>" class="dropdown-toggle no-arr">
                                 <span class="font-icon font-icon-home">
                             </a>
                         </div>
                         <div class="dropdown dropdown-typical">
                             <a href="#" class="dropdown-toggle no-arr">
-                                <span class="font-icon glyphicon glyphicon-user"></span>
+                                <span class="font-icon font-icon-user"></span>
+                                <span class="lblcontactonomx"><?php echo ucwords($this->session->nombre . " " . $this->session->apellido) ?></span>
                             </a>
                         </div>
                     </div><!--.site-header-collapsed-in-->
