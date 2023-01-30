@@ -6,6 +6,7 @@ class View
 {
     public $mensaje;
     public $email;
+    public $categoria;
     private $session;
     public function __construct()
     {

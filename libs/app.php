@@ -27,8 +27,8 @@ class App
             if (file_exists($archivoController)) {
                 require_once $archivoController;
                 $controller = new $url[0];
+                $controller->loadModel($url[0]);
                 if ($url[0] === "login") {
-                    $controller->loadModel('login');
                     $controller->VerificaUsuario();
                     $controller->render();
                 } elseif ($nparam == 1 && $url[0] != "logout") {

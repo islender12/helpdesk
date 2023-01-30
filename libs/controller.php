@@ -21,11 +21,26 @@ class Controller
         }
     }
 
+    public function cleanhtml($setence)
+    {
+        return trim(htmlspecialchars($setence));
+    }
+
+    public function cleanall($setence){
+        return trim(strip_tags($setence));
+    }
+
+    public function htmldecode($setence)
+    {
+        return htmlspecialchars_decode($setence);
+    }
+
     public function back()
     {
         $url = $_GET['url'];
         $url = rtrim($url, '/');
         $url = explode('/', $url);
-        header("Location: " . ruta($url[0]));
+        $this->view->mensaje = "hola";
+        redirect($url[0]);
     }
 }
