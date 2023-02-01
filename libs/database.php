@@ -25,6 +25,8 @@ class Database
         try {
 
             $connection = "mysql:host=" . $this->host . ";dbname=" . $this->db . ";charset=" . $this->charset;
+            // Cuando se usa una conexión PDO a MySQL los prepared statements de verdad puede que no se utilicen por defecto. 
+            // Para usarlos siempre, hay que desactivar la emulación de prepared statements
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_EMULATE_PREPARES => false

@@ -39,6 +39,7 @@ class Login extends Controller
                     $_SESSION['nombre'] = $usuario->nombre;
                     $_SESSION['apellido'] = $usuario->apellido;
                     $_SESSION['email']  = $usuario->email;
+                    $_SESSION['rol'] = $usuario->rol_user;
                     redirect("home");
                 } else {
                     $this->view->mensaje = "Credenciales Incorrectas";
