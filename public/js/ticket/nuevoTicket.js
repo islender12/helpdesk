@@ -10,17 +10,6 @@ $(document).ready(function () {
   });
 });
 
-$(".swal-btn-success").click(function (e) {
-  e.preventDefault();
-  swal({
-    title: "Good job!",
-    text: "You clicked the button!",
-    type: "success",
-    confirmButtonClass: "btn-success",
-    confirmButtonText: "Success",
-  });
-});
-
 function guardar(e) {
   e.preventDefault();
   var formData = new FormData($("#ticket_form")[0]);
@@ -32,7 +21,7 @@ function guardar(e) {
     contentType: false,
     processData: false,
     success: function (datos) {
-      console.log(datos);
+      // console.log(datos);
       if (datos == "insert") {
         swal("Correcto!", "Registrado Correctamente", "success");
         resetform();
@@ -54,4 +43,5 @@ function resetform() {
   });
   $("#descripcion").summernote("reset");
 }
+
 init();

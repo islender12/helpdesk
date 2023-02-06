@@ -26,25 +26,44 @@ class TicketModel extends Model
         }
     }
 
-    public function ListAllTicket()
+    public function ListTicketUser($id)
     {
         try {
-            $query = $this->db->connect()->query("SELECT tk.id_ticket,tk.titulo_ticket,tk.descripcion_ticket,cat.nombre_cat,us.nombre,us.apellido,tk.estado FROM tm_ticket tk INNER JOIN tm_categoria cat ON tk.id_categoria = cat.id_cat INNER JOIN tm_usuario us ON tk.id_usuario = us.id_user WHERE tk.estado = 1");
-            return $query->fetch();
+
+            if (!$id) {
+                $query = $this->db->connect()->query("SELECT tk.id_ticket,tk.titulo_ticket,tk.descripcion_ticket,tk.fecha_creacion,cat.nombre_cat,us.nombre,us.id_user,us.apellido,tk.estado FROM tm_ticket tk INNER JOIN tm_categoria cat ON tk.id_categoria = cat.id_cat INNER JOIN tm_usuario us ON tk.id_usuario = us.id_user");
+                $result = $query->fetchAll();
+                return $result;
+            } else {
+                $query = $this->db->connect()->prepare("SELECT tk.id_ticket,tk.titulo_ticket,tk.descripcion_ticket,tk.fecha_creacion,cat.nombre_cat,us.nombre,us.id_user,us.apellido,tk.estado FROM tm_ticket tk INNER JOIN tm_categoria cat ON tk.id_categoria = cat.id_cat INNER JOIN tm_usuario us ON tk.id_usuario = us.id_user WHERE us.id_user = :id");
+                $query->bindParam(':id', $id);
+                $query->execute();
+                $result = $query->fetchAll();
+                return $result;
+            }
         } catch (PDOException $e) {
             return false;
         }
     }
-    public function ListTicketUser($id)
+
+    public function DetalleTicket($id_ticket)
     {
         try {
-            $query = $this->db->connect()->prepare("SELECT tk.id_ticket,tk.titulo_ticket,tk.descripcion_ticket,cat.nombre_cat,us.nombre,us.id_user,us.apellido,tk.estado FROM tm_ticket tk INNER JOIN tm_categoria cat ON tk.id_categoria = cat.id_cat INNER JOIN tm_usuario us ON tk.id_usuario = us.id_user WHERE us.id_user = :id AND tk.estado = 1");
-            $query->bindParam(':id', $id);
+            $query  = $this->db->connect()->prepare("SELECT dtk.id_detalletk,dtk.id_ticket,dtk.descripcion_ticket,dtk.fecha_creacion,us.nombre,us.apellido FROM tm_detalle_ticket dtk INNER JOIN tm_usuario us ON dtk.id_usuariodt = us.id_user WHERE id_ticket = :id_ticket");
+            $query->bindParam(':id_ticket', $id_ticket);
             $query->execute();
             $result = $query->fetchAll();
             return $result;
         } catch (PDOException $e) {
-            return false;
         }
     }
+
+    // public function ObservarTickets()
+    // {
+    //     $query = $this->db->connect()->prepare("SELECT tk.id_ticket,tk.titulo_ticket,tk.descripcion_ticket,tk.fecha_creacion,cat.nombre_cat,us.nombre,us.id_user,us.apellido,tk.estado FROM tm_ticket tk INNER JOIN tm_categoria cat ON tk.id_categoria = cat.id_cat INNER JOIN tm_usuario us ON tk.id_usuario = us.id_user WHERE us.id_user = :id");
+    //     $query->bindParam(':id', $id);
+    //     $query->execute();
+    //     $result = $query->fetchAll();
+    //     return $result;
+    // }
 }

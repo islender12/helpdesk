@@ -7,6 +7,7 @@ class Ticket extends Controller
     public $categoria;
     private $mensaje;
     public $ticket;
+    private $id_ticket;
     public function __construct()
     {
         parent::__construct();
@@ -42,19 +43,29 @@ class Ticket extends Controller
         }
     }
 
-    public  function ListarTicket()
+    public function ListarTicket()
     {
-        $datos = $this->model->ListTicketUser($this->session->id);
+
+        if (intval($this->session->rol_user) === 2) {
+            $datos = $this->model->ListTicketUser(null);
+        } else {
+            $datos = $this->model->ListTicketUser($this->session->id);
+        }
         $data = array();
         foreach ($datos as $row) {
             $sub_array = array();
             $sub_array[] = $row['id_ticket'];
             $sub_array[] = $row['nombre_cat'];
             $sub_array[] = $row['titulo_ticket'];
-            $sub_array[] = '<button type="button" onClick"ver(' . $row["id_ticket"] . ');" id="' . $row['id_ticket'] . '" class="btn btn-outline-primary btn-icon"><div><i class="fa fa-edit"></i></div></button>';
+            if ($row['estado']) {
+                $sub_array[] = '<span class="label label-pill label-success">Abierto</span>';
+            } else {
+                $sub_array[] = '<span class="label label-pill label-danger">Cerrado</span>';
+            }
+            $sub_array[] = date("d/m/Y H:i:s", strtotime($row['fecha_creacion']));
+            $sub_array[] = '<button type="button" class="btn btn-sm btn-outline-primary btn-icon" onclick="verdetalleticket(' . $row['id_ticket'] . ')" id="' . $row['id_ticket'] . '"> <div><i class="fa fa-eye"></i></div></button>';
             $data[] = $sub_array;
         }
-
 
         $results = [
             "sEcho" => 1,
@@ -64,6 +75,13 @@ class Ticket extends Controller
         ];
 
         echo json_encode($results);
+    }
+
+    public function verDetalleTicket($id_ticket)
+    {
+        $detalle = $this->model->DetalleTicket($id_ticket[0]);
+        $this->view->detalleticket = $detalle;
+        $this->view->render('ticket/detalleticket');
     }
 
     public function ListAllCategory()

@@ -1,9 +1,19 @@
 var tabla;
-
 function init() {}
-
 $(document).ready(function () {
+  ListarTicket();
+  // Lo optimo seria crear un websocket pero usaremos esto por este momento
+  setInterval(destroyTable, 60000); // Cada minuto (60000 milisegundos) se recarga el datatable
+});
+
+function destroyTable() {
+  tabla.destroy();
+  ListarTicket();
+}
+
+function ListarTicket() {
   tabla = $("#ticket_data").DataTable({
+    order: [[4, "desc"]],
     responsive: true,
     aProcessing: true,
     aServerSide: true,
@@ -29,20 +39,15 @@ $(document).ready(function () {
     ajax: {
       type: "post",
       url: "http://localhost/helpdesk/ticket/ListarTicket",
-      data: "data",
       dataType: "json",
       error: function (e) {
         console.log(e.responseText);
       },
     },
   });
-});
-
-// Datatable
-// $(function () {
-//   $("#ticket_data").DataTable({
-//     responsive: true,
-//   });
-// });
+}
+function verdetalleticket(id_ticket) {
+  window.location.href = "ticket/verDetalleTicket/" + id_ticket;
+}
 
 init();

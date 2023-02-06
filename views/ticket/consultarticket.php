@@ -35,6 +35,8 @@ require "views/head.php";
                                 <th style="width: 10%;">Nro. Ticket</th>
                                 <th>Categoria</th>
                                 <th>Titutlo</th>
+                                <th>Estado</th>
+                                <th>Fecha Creación</th>
                                 <th style="width: 30%;">Acciones</th>
                             </tr>
                         </thead>
@@ -46,6 +48,8 @@ require "views/head.php";
                                 <th style="width: 10%;">Nro. Ticket</th>
                                 <th>Categoria</th>
                                 <th>Titutlo</th>
+                                <th>Estado</th>
+                                <th>Fecha Creación</th>
                                 <th style="width: 30%;">Acciones</th>
                             </tr>
                         </tfoot>

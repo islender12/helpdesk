@@ -1,5 +1,5 @@
 <nav class="side-menu">
-    <?php if ($this->session->rol_user == 1) { ?>
+    <?php if ($this->session->rol_user == 2) { ?>
         <ul class="side-menu-list">
             <li class="blue-dirty">
                 <a href="<?php ruta("home") ?>">
