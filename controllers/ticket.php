@@ -27,7 +27,7 @@ class Ticket extends Controller
 
     public function RegistarTicket()
     {
-        if (empty($_POST['categoria']) || empty($_POST['titulo']) || empty($_POST['descripcion'])) {
+        if ($this->isEmpty()) {
             echo "Asegurate de Rellenar Todos Los Campos";
         } else {
             if ($this->model->InsertTicket([
@@ -41,6 +41,11 @@ class Ticket extends Controller
                 echo "error";
             }
         }
+    }
+
+    public function isEmpty()
+    {
+        return (empty($_POST['categoria']) || empty($_POST['titulo']) || empty($_POST['descripcion']));
     }
 
     public function ListarTicket()
