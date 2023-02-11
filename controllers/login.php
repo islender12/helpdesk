@@ -15,7 +15,7 @@ class Login extends Controller
         $this->view->render("login/index");
     }
 
-    public function Login()
+    public function userLogin()
     {
         if (isset($_POST['enviar'])) {
 
