@@ -11,7 +11,7 @@ class App
             require_once $archivoController;
             $controller = new Login();
             $controller->loadModel('login');
-            $controller->VerificaUsuario();
+            $controller->Login();
             $controller->render();
         } else {
             // Eliminamos el ultimo '/' de la url
@@ -29,7 +29,7 @@ class App
                 $controller = new $url[0];
                 $controller->loadModel($url[0]);
                 if ($url[0] === "login") {
-                    $controller->VerificaUsuario();
+                    $controller->Login();
                     $controller->render();
                 } elseif ($nparam == 1 && $url[0] != "logout") {
                     $controller->render();
