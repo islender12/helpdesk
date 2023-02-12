@@ -46,8 +46,9 @@ function ListarTicket() {
     },
   });
 }
+
 function verdetalleticket(id_ticket) {
-  window.location.href = "ticket/verDetalleTicket/" + id_ticket;
+  window.location.href = "ticket/DetalleTicket/" + id_ticket;
 }
 
 init();

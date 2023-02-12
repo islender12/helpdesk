@@ -7,7 +7,7 @@ class Ticket extends Controller
     public $categoria;
     private $mensaje;
     public $ticket;
-    private $id_ticket;
+    public $id_ticket;
     public function __construct()
     {
         parent::__construct();
@@ -82,11 +82,15 @@ class Ticket extends Controller
         echo json_encode($results);
     }
 
-    public function verDetalleTicket($id_ticket)
+    public function DetalleTicket()
+    {
+        $this->view->render('ticket/detalleticket');
+    }
+
+    public function ListarDetalleTicket($id_ticket)
     {
         $detalle = $this->model->DetalleTicket($id_ticket[0]);
-        $this->view->detalleticket = $detalle;
-        $this->view->render('ticket/detalleticket');
+        echo json_encode($detalle);
     }
 
     public function ListAllCategory()
