@@ -49,7 +49,7 @@ class TicketModel extends Model
     public function DetalleTicket($id_ticket)
     {
         try {
-            $query  = $this->db->connect()->prepare("SELECT dtk.id_detalletk,dtk.id_ticket,dtk.descripcion_ticket,dtk.fecha_creacion,us.nombre,us.apellido FROM tm_detalle_ticket dtk INNER JOIN tm_usuario us ON dtk.id_usuariodt = us.id_user WHERE id_ticket = :id_ticket");
+            $query  = $this->db->connect()->prepare("SELECT dtk.id_detalletk,dtk.id_ticket,dtk.descripcion_ticket,dtk.fecha_creacion,cat.nombre_cat,us.nombre,us.apellido,r.rol FROM tm_detalle_ticket dtk INNER JOIN tm_usuario us ON dtk.id_usuariodt = us.id_user INNER JOIN roles r ON us.rol_user = r.id_rol inner JOIN tm_ticket tk ON tk.id_ticket = dtk.id_ticket  INNER JOIN tm_categoria cat ON cat.id_cat = tk.id_categoria WHERE dtk.id_ticket = :id_ticket");
             $query->bindParam(':id_ticket', $id_ticket);
             $query->execute();
             $result = $query->fetchAll();
