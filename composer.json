@@ -1,0 +1,7 @@
+{
+    "name": "sistema/helpdesk",
+    "require": {
+        "php": ">=8.0",
+        "cboden/ratchet": "^0.4.4"
+    }
+}
