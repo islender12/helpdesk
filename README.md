@@ -5,3 +5,5 @@ HTML, CSS, BOOTSTRAP y algunas plantillas html-css
 
 Tal proyecto se hace como practica y se le añaden funcionales que no se encuentran en el
 curso y se le realizan pequeñas mejoras y optimización en el codigo dado mi Conocimiento en PHP ....
+
+A Manera de Practica Empezaremos con WebSocket
